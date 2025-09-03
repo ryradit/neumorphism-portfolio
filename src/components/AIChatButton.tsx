@@ -227,7 +227,7 @@ export function AIChatButton() {
                 : 'bg-black shadow-light-neu-inset border-t border-gray-700/30'
             }`}>
               <h3 className="font-heading font-medium text-center text-white">
-                Chat with Ryan's AI Assistant
+                Chat with Ryan&apos;s AI Assistant
               </h3>
               <div className="flex items-center justify-center mt-1">
                 <motion.div 
