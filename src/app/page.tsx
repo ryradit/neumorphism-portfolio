@@ -1,11 +1,7 @@
 'use client';
 
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { NeuCard } from '@/co            {['Home', 'About', 'Projects', 'Contact'].map((item) => {
-            const sectionId = item.toLowerCase();
-            const isActive = activeSection === sectionId;
-            
-            return (nts/NeuCard';
+import { NeuCard } from '@/components/NeuCard';
 import { NeuButton } from '@/components/NeuButton';
 import { ContactForm } from '@/components/ContactForm';
 import { AIChatButton } from '@/components/AIChatButton';
@@ -405,7 +401,7 @@ export default function Home() {
             },
             {
               title: "AI-Powered Barbershop Website",
-              description: "Developed an AI-enhanced website for 'King Barbershop', featuring intelligent functionalities. View the live site or browse the code on GitHub.",
+              description: "Developed an AI-enhanced website for &apos;King Barbershop&apos;, featuring intelligent functionalities. View the live site or browse the code on GitHub.",
               tags: ["AI", "Web Development", "Next.js"],
               projectLink: "https://king-barbershop.vercel.app/",
               sourceLink: "https://github.com/ryradit/King-Barbershop",
