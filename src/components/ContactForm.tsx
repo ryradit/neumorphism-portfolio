@@ -90,7 +90,7 @@ export function ContactForm({ isDark }: ContactFormProps) {
       // First try to send with EmailJS directly from the client
       try {
         await EmailService.sendEmail(formData);
-      } catch (emailError) {
+      } catch (_) {
         // Fallback to our API route if direct EmailJS fails
         const response = await fetch('/api/contact', {
           method: 'POST',
@@ -117,7 +117,7 @@ export function ContactForm({ isDark }: ContactFormProps) {
       
       setSubmitStatus({
         type: 'success',
-        message: 'Your message has been sent! I\'ll get back to you soon.',
+        message: 'Your message has been sent! I&apos;ll get back to you soon.',
       });
     } catch (error) {
       console.error('Contact form submission error:', error);

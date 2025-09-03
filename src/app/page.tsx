@@ -1,13 +1,17 @@
 'use client';
 
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { NeuCard } from '@/components/NeuCard';
+import { NeuCard } from '@/co            {['Home', 'About', 'Projects', 'Contact'].map((item) => {
+            const sectionId = item.toLowerCase();
+            const isActive = activeSection === sectionId;
+            
+            return (nts/NeuCard';
 import { NeuButton } from '@/components/NeuButton';
 import { ContactForm } from '@/components/ContactForm';
 import { AIChatButton } from '@/components/AIChatButton';
 import { useTheme } from 'next-themes';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
-import { motion, useAnimationControls } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { 
@@ -98,7 +102,7 @@ export default function Home() {
         {/* Portfolio text removed from top left */}
         
         <nav className="hidden md:flex gap-8 justify-center">
-          {['Home', 'About', 'Projects', 'Contact'].map((item, index) => {
+          {['Home', 'About', 'Projects', 'Contact'].map((item) => {
             const sectionId = item.toLowerCase();
             const isActive = activeSection === sectionId;
             
@@ -149,7 +153,7 @@ export default function Home() {
           className="max-w-3xl"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 font-heading tracking-tight">
-            Hi, I'm <span className={isDark ? 'text-dark-accent' : 'text-light-accent'}>Ryan Radityatama</span>
+            Hi, I&apos;m <span className={isDark ? 'text-dark-accent' : 'text-light-accent'}>Ryan Radityatama</span>
           </h1>
           <h2 className="text-lg md:text-xl mb-8 font-heading font-light tracking-wide">AI & Software Engineer</h2>
           <p className="mb-10 text-sm max-w-xl mx-auto leading-relaxed">
@@ -234,19 +238,19 @@ export default function Home() {
               </h2>
               
               <p className="mb-4 text-sm leading-relaxed">
-                I'm a Software Engineer who loves turning complex challenges into elegant, user-friendly solutions. 
-                My journey in tech has been driven by a passion for creating applications that make a real difference in people's lives.
+                I&apos;m a Software Engineer who loves turning complex challenges into elegant, user-friendly solutions. 
+                My journey in tech has been driven by a passion for creating applications that make a real difference in people&apos;s lives.
               </p>
               
               <p className="mb-4 text-sm leading-relaxed">
-                Through my experience with modern tools like React and Node.js, I've had the privilege of building applications 
-                that bridge the gap between advanced AI and everyday users. My Master's degree from Beijing Institute of Technology 
+                Through my experience with modern tools like React and Node.js, I&apos;ve had the privilege of building applications 
+                that bridge the gap between advanced AI and everyday users. My Master&apos;s degree from Beijing Institute of Technology 
                 allowed me to dive deep into how AI can make a positive impact.
               </p>
               
               <p className="text-sm leading-relaxed">
-                What excites me most is the opportunity to collaborate on projects that push boundaries. Whether it's optimizing system performance, 
-                leading development teams, or innovating with AI, I believe in creating technology that's not just powerful, 
+                What excites me most is the opportunity to collaborate on projects that push boundaries. Whether it&apos;s optimizing system performance, 
+                leading development teams, or innovating with AI, I believe in creating technology that&apos;s not just powerful, 
                 but also accessible and meaningful to its users.
               </p>
               
