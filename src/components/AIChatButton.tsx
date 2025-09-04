@@ -62,6 +62,18 @@ export function AIChatButton() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
   
+  // Update timestamps every 30 seconds to refresh "Just now" texts
+  useEffect(() => {
+    if (messages.length <= 1) return; // Don't set interval if only welcome message exists
+    
+    const intervalId = setInterval(() => {
+      // Force re-render to update timestamps
+      setMessages(prevMessages => [...prevMessages]);
+    }, 30000); // 30 seconds
+    
+    return () => clearInterval(intervalId);
+  }, [messages.length]);
+  
   const handleSendMessage = async (e?: React.FormEvent, suggestedQuery?: string) => {
     if (e) e.preventDefault();
     
@@ -128,7 +140,15 @@ export function AIChatButton() {
   };
   
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const now = new Date();
+    const diffInMilliseconds = now.getTime() - date.getTime();
+    const diffInMinutes = Math.floor(diffInMilliseconds / 60000);
+    
+    if (diffInMinutes < 1) {
+      return "Just now";
+    } else {
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
   };
   
   return (
