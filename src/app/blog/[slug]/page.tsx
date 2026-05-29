@@ -340,7 +340,6 @@ export default function BlogPostDetailPage({ params }: BlogPostPageProps) {
                   </button>
                   <button
                     onClick={() => {
-                      const shareUrl = encodeURIComponent(window.location.href);
                       const shareText = encodeURIComponent(`Read "${post.title}": ${window.location.href}`);
                       window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
                     }}
