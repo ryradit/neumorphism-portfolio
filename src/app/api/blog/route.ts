@@ -60,8 +60,17 @@ const readPosts = (): BlogPost[] => {
 
 // Write posts helper
 const writePosts = (posts: BlogPost[]) => {
-  const dbPath = getDbPath();
-  fs.writeFileSync(dbPath, JSON.stringify(posts, null, 2), 'utf8');
+  try {
+    const dbPath = getDbPath();
+    const dir = path.dirname(dbPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(dbPath, JSON.stringify(posts, null, 2), 'utf8');
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.warn('[Storage API] Failed to write local posts backup (likely read-only filesystem in production):', errMsg);
+  }
 };
 
 export async function GET(req: Request) {
@@ -136,7 +145,12 @@ export async function POST(req: Request) {
         } else {
           leads = leads.map((l) => l.id === leadId ? { ...l, status: leadStatus as 'new' | 'contacted' } : l);
         }
-        fs.writeFileSync(crmPath, JSON.stringify(leads, null, 2), 'utf8');
+        try {
+          fs.writeFileSync(crmPath, JSON.stringify(leads, null, 2), 'utf8');
+        } catch (err: unknown) {
+          const errMsg = err instanceof Error ? err.message : String(err);
+          console.warn('[Storage API] Failed to write local CRM leads backup (likely read-only filesystem in production):', errMsg);
+        }
         return NextResponse.json({ success: true });
       }
       return NextResponse.json({ error: 'CRM data store not found' }, { status: 404 });
